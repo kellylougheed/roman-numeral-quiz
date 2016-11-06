@@ -235,9 +235,9 @@ input, button {
 div.container {
   position: relative;
   top: 20px;
+  left: 0px;
   transform: none;
   width: 90%;
-  left: 5%;
 }
 
 h1 {
