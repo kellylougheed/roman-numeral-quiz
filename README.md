@@ -1,6 +1,6 @@
 <h1>Roman Numeral Quiz</h1>
 
-<b>This Roman numeral app was written in JavaScript, HTML, and CSS.</b>
+<b>This Roman numeral app was written in AngularJS, JavaScript, HTML, and CSS.</b>
 
 The app quizzes users on converting Arabic numerals to Roman numerals.
 
@@ -12,4 +12,7 @@ The app quizzes users on converting Arabic numerals to Roman numerals.
 <li> A JavaScript algorithm generates the correct Roman numeral, allowing users to check their answers by pressing the "Check" button.</li><br/>
 
 <li> Users can generate unlimited random numbers by pressing the "New number" button.</li><br/>
+
+<li> Uses AngularJS framework for cleaner code.</li>
+
 </ul>
