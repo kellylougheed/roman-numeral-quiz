@@ -16,8 +16,7 @@ body {
 
 div.container {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 200px;
   width: 70%;
   left: 15%;
   margin-left: auto;
