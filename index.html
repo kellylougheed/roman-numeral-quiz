@@ -12,28 +12,28 @@
   <script src="angular.min.js"></script>
     <script src="app.js"></script>
 </head>
-<body ng-app="RomanNumeral">
+<body ng-app="RomanNumeralQuiz">
 <div class="container">
 <h1>Roman Numeral Quiz</h1>
-<div class="content" ng-controller="RomanNumeralController">
+<div class="content" ng-controller="RomanNumeralController as controller">
 
     <div class="col-lg-4 col-md-4 col-sm-12 left">Your number:</div>
-    <div class="col-lg-4 col-md-4 col-sm-12 center"><h2>{{ arabicNumber }}</h2></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 center"><h2>{{ controller.arabicNumber }}</h2></div>
 
     <div class="clear"></div>
 
     <div class="col-lg-4 col-md-4 col-sm-12 left">Convert to a Roman numeral:</div>
     <div class="col-lg-4 col-md-4 col-sm-12 center">
-      <input type="text" placeholder = "?" ng-model="answer"/>
+      <input type="text" placeholder = "?" ng-model="controller.answer"/>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 right">
-    <button ng-click="checkAnswer(arabicNumber, answer)">Check</button></div>
+    <button ng-click="controller.checkAnswer(controller.arabicNumber, controller.answer)">Check</button></div>
 
     <div class="clear"></div>
 
-    <h2>{{ verdict }}</h2>
-    <p>{{ correctAnswer }}</p>
-    <p><button ng-click="newNumber()">New number</button></p>
+    <h2>{{ controller.verdict }}</h2>
+    <p>{{ controller.correctAnswer }}</p>
+    <p><button ng-click="controller.reset()">New number</button></p>
 
     <div class="clear"></div>
 

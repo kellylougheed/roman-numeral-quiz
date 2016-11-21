@@ -1,24 +1,86 @@
 (function() {
   'use strict';
 
-  angular.module('RomanNumeral', [])
+  angular.module('RomanNumeralQuiz', [])
 
-  .controller('RomanNumeralController', RomanNumeralController);
+  .controller('RomanNumeralController', RomanNumeralController)
+  .service('RomanNumeralConverterService', RomanNumeralConverterService);
 
-  RomanNumeralController.$inject = ['$scope'];
+  RomanNumeralController.$inject = ['RomanNumeralConverterService'];
 
-  function RomanNumeralController($scope) {
+  function RomanNumeralController(RomanNumeralConverterService) {
+    var controller = this;
 
-    $scope.arabicNumber = Math.floor((Math.random() * 1000) + 1);
-    $scope.answer = "";
-    $scope.verdict = "";
-    $scope.correctAnswer = "";
+    controller.arabicNumber = RomanNumeralConverterService.getArabicNumber();
+    controller.answer = RomanNumeralConverterService.getAnswer();
+    controller.verdict = RomanNumeralConverterService.getVerdict();
+    controller.correctAnswer = RomanNumeralConverterService.getCorrectAnswer();
 
-    $scope.newNumber = function() {
-      $scope.verdict = "";
-      $scope.correctAnswer = "";
-      $scope.answer = "";
-      $scope.arabicNumber = Math.floor((Math.random() * 1000) + 1);
+    controller.reset = function() {
+      RomanNumeralConverterService.reset();
+      controller.update();
+      controller.arabicNumber = RomanNumeralConverterService.getArabicNumber();
+      controller.answer = "";
+    }
+
+    controller.checkAnswer = function(arabicNumber, answer) {
+        RomanNumeralConverterService.checkAnswer(arabicNumber, answer);
+        controller.update();
+    }
+
+    controller.update = function() {
+      controller.verdict = RomanNumeralConverterService.getVerdict();
+      controller.correctAnswer = RomanNumeralConverterService.getCorrectAnswer();
+    }
+
+  }
+
+  function RomanNumeralConverterService() {
+    var service = this;
+
+    service.arabicNumber = getNewNumber();
+    service.answer = "";
+    service.verdict = "";
+    service.correctAnswer = "";
+
+    service.reset = function() {
+      service.arabicNumber = getNewNumber();
+      service.answer = "";
+      service.verdict = "";
+      service.correctAnswer = "";
+    }
+
+    function getNewNumber() {
+      var newNum = Math.floor((Math.random() * 1000) + 1);
+      return newNum;
+    }
+
+    service.getArabicNumber = function() {
+      return service.arabicNumber;
+    }
+
+    service.getAnswer = function() {
+      return service.answer;
+    }
+
+    service.getVerdict = function() {
+      return service.verdict;
+    }
+
+    service.getCorrectAnswer = function() {
+      return service.correctAnswer;
+    }
+
+    service.checkAnswer = function(arabicNumber, answer) {
+      var correctAnswer = convertToRoman(arabicNumber);
+        if (correctAnswer == answer) {
+          service.verdict = "Correct!";
+        } else if (correctAnswer != answer) {
+          service.verdict = "Incorrect!";
+          service.correctAnswer = "The correct answer was "+correctAnswer+".";
+        }
+        console.log(service.verdict);
+        console.log(service.correctAnswer);
     }
 
     function convertToRoman(num) {
@@ -96,17 +158,6 @@
         }
       }
      return romanNumeral;
-    }
-
-    $scope.checkAnswer = function(arabicNumber, answer) {
-        var correctAnswer = convertToRoman(arabicNumber);
-        answer = answer.toUpperCase();
-        if (correctAnswer == answer) {
-          $scope.verdict = "Correct!";
-        } else if (correctAnswer != answer) {
-          $scope.verdict = "Incorrect!";
-          $scope.correctAnswer = "The correct answer was "+correctAnswer+".";
-        }
     }
 
   }
