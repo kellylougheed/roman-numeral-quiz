@@ -1,14 +1,58 @@
-  var number;
+(function () {
+'use strict';
 
-  function generateRandomNumber() {
-    var random = Math.floor((Math.random() * 1000) + 1);
-    if (random >= 1000) {
-      random = 9999;
+angular.module('RomanNumeralQuiz')
+.service('RomanNumeralConverterService', RomanNumeralConverterService);
+
+function RomanNumeralConverterService() {
+    var service = this;
+
+    service.arabicNumber = getNewNumber();
+    service.answer = "";
+    service.verdict = "";
+    service.correctAnswer = "";
+
+    service.reset = function() {
+      service.arabicNumber = getNewNumber();
+      service.answer = "";
+      service.verdict = "";
+      service.correctAnswer = "";
     }
-    return random;
-  }
 
-  function convertToRoman(num) {
+    function getNewNumber() {
+      var newNum = Math.floor((Math.random() * 1000) + 1);
+      return newNum;
+    }
+
+    service.getArabicNumber = function() {
+      return service.arabicNumber;
+    }
+
+    service.getAnswer = function() {
+      return service.answer;
+    }
+
+    service.getVerdict = function() {
+      return service.verdict;
+    }
+
+    service.getCorrectAnswer = function() {
+      return service.correctAnswer;
+    }
+
+    service.checkAnswer = function(arabicNumber, answer) {
+      var correctAnswer = convertToRoman(arabicNumber);
+        if (correctAnswer == answer) {
+          service.verdict = "Correct!";
+        } else if (correctAnswer != answer) {
+          service.verdict = "Incorrect!";
+          service.correctAnswer = "The correct answer was "+correctAnswer+".";
+        }
+        console.log(service.verdict);
+        console.log(service.correctAnswer);
+    }
+
+    function convertToRoman(num) {
       var romanNumeral = "";
       num = Math.floor(num);
       var number = num.toString();
@@ -85,29 +129,6 @@
      return romanNumeral;
     }
 
-    function checkAnswer(form) {
-        var correctAnswer = convertToRoman(number);
-        var yourAnswer = form.answerInput.value;
-        yourAnswer = yourAnswer.toUpperCase();
-        if (correctAnswer == yourAnswer) {
-          $("#verdict").html("Correct!");
-          $("#correctAnswer").html("");
-        } else if (correctAnswer != yourAnswer) {
-          $("#verdict").html("Incorrect");
-          $("#correctAnswer").html("The correct answer was "+correctAnswer+".");
-        }
-    }
-
-window.onload = function() {
-  number = generateRandomNumber();
-  $("#number").html(number);
-
-  $("#newNumberButton").click(function(){
-    number = generateRandomNumber();
-    $("#number").html(number);
-    $("#verdict").html("");
-    $("#correctAnswer").html("");
-  })
-
-};
-
+  }
+  
+})();
