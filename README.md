@@ -13,6 +13,6 @@ The app quizzes users on converting Arabic numerals to Roman numerals.
 
 <li> Users can generate unlimited random numbers by pressing the "New number" button.</li><br/>
 
-<li> Uses AngularJS framework for cleaner code.</li>
+<li> Built in the AngularJS framework using controllers, services, templates, and routes.</li>
 
 </ul>
