@@ -2,15 +2,17 @@
 'use strict';
 
 angular.module('RomanNumeralQuiz')
-.service('RomanNumeralConverterService', RomanNumeralConverterService);
+.service('RomanNumeralService', RomanNumeralService);
 
-function RomanNumeralConverterService() {
+function RomanNumeralService() {
     var service = this;
 
     service.arabicNumber = getNewNumber();
     service.answer = "";
     service.verdict = "";
     service.correctAnswer = "";
+    service.history = [];
+    service.correctCount = 0;
 
     service.reset = function() {
       service.arabicNumber = getNewNumber();
@@ -40,16 +42,39 @@ function RomanNumeralConverterService() {
       return service.correctAnswer;
     }
 
+    service.getHistory = function() {
+      return service.history;
+    }
+
+    service.getCorrectCount = function() {
+      return service.correctCount;
+    }
+
     service.checkAnswer = function(arabicNumber, answer) {
       var correctAnswer = convertToRoman(arabicNumber);
-        if (correctAnswer == answer) {
-          service.verdict = "Correct!";
-        } else if (correctAnswer != answer) {
-          service.verdict = "Incorrect!";
-          service.correctAnswer = "The correct answer was "+correctAnswer+".";
-        }
-        console.log(service.verdict);
-        console.log(service.correctAnswer);
+      if (correctAnswer == answer) {
+        service.verdict = "Correct!";
+      } else if (correctAnswer != answer) {
+        service.verdict = "Incorrect!";
+        service.correctAnswer = "The correct answer was "+correctAnswer+".";
+      }
+      store(answer, correctAnswer);
+    }
+
+    function store(answer, correctAnswer) {
+      var correct = false;
+      var color = "red";
+      if (answer == correctAnswer) {
+        correct = true;
+        color = "green";
+        service.correctCount++;
+      }
+      service.history.push({
+        "userAnswer": answer,
+        "correctAnswer": correctAnswer,
+        "correct": correct,
+        "col": color
+      });
     }
 
     function convertToRoman(num) {

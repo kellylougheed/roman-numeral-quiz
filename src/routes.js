@@ -12,10 +12,10 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
 
   // Quiz
-  .state('home', {
+  .state('quiz', {
     url: '/',
-    templateUrl: 'src/templates/home.template.html',
-    controller: 'RomanNumeralController as controller'
+    templateUrl: 'src/templates/quiz.template.html',
+    controller: 'QuizController as quiz'
   })
 
   // History
@@ -23,6 +23,11 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/history',
     templateUrl: 'src/templates/history.template.html',
     controller: 'HistoryController as history'
+  })
+
+  .state('use', {
+    url: '/use',
+    templateUrl: 'src/templates/use.template.html'
   });
 }
 

@@ -1,0 +1,19 @@
+    <div class="col-lg-4 col-md-4 col-sm-12 left">Your number:</div>
+    <div class="col-lg-4 col-md-4 col-sm-12 center"><h2>{{ quiz.arabicNumber }}</h2></div>
+
+    <div class="clear"></div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 left">Convert to a Roman numeral:</div>
+    <div class="col-lg-4 col-md-4 col-sm-12 center">
+      <input type="text" placeholder = "?" ng-model="quiz.answer"/>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 right">
+    <button ng-click="quiz.checkAnswer(quiz.arabicNumber, quiz.answer)">Check</button></div>
+
+    <div class="clear"></div>
+
+    <h2>{{ quiz.verdict }}</h2>
+    <p>{{ quiz.correctAnswer }}</p>
+    <p><button ng-click="quiz.reset()">New number</button></p>
+
+    <div class="clear"></div>

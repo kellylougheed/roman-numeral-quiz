@@ -21,11 +21,17 @@
   <script src="src/routes.js"></script>
 
   <!-- Module artifacts -->
-  <script src="src/romannumeralconverterservice.service.js"></script>
-  <script src="src/romannumeralcontroller.controller.js"></script>
+  <script src="src/romannumeral.service.js"></script>
+  <script src="src/quiz.controller.js"></script>
+  <script src="src/history.controller.js"></script>
 
 </head>
 <body ng-app="RomanNumeralQuiz">
+  <nav>
+    <a ui-sref="quiz">Quiz</a>
+    <a ui-sref="history">User History</a>
+    <a ui-sref="use">For Teachers</a>
+  </nav>
   <div class="container">
     <h1>Roman Numeral Quiz</h1>
     <div class="content">

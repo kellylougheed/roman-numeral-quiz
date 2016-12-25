@@ -14,6 +14,10 @@ body {
   letter-spacing: 2px;
 }
 
+nav {
+  float: right;
+}
+
 div.container {
   position: absolute;
   top: 200px;
