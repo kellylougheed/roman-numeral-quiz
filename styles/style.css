@@ -1,5 +1,5 @@
 html { 
-  background: url(http://www.kellylougheed.com/images/backgrounds/colosseum.jpg) no-repeat center center fixed; 
+  background: url(http://kellylougheed.com/images/backgrounds/colosseum-colors.jpg) no-repeat center center fixed; 
   background-size: cover;
   background-color: #ffffff;
 }
@@ -9,8 +9,7 @@ html {
 }
 
 body {
-  color: #6600cc;
-  font-family: 'Roboto', arial;
+  font-family: 'Lato', arial;
   letter-spacing: 2px;
 }
 
@@ -18,30 +17,59 @@ nav {
   float: right;
 }
 
+nav a, nav a:link, nav a:active, nav a:visited {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  border-bottom: 3px solid rgb(229,172,34);
+}
+
+nav a:hover {
+  color: rgb(229,172,34);
+}
+
+a, a:link, a:active, a:visited {
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px dotted black;
+}
+
+a:hover {
+  border-bottom: 1px solid black;
+}
+
 div.container {
   position: absolute;
-  top: 200px;
+  top: 100px;
   width: 70%;
   left: 15%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 25px;
 }
 
 div.content {
   background:rgba(255,255,255,.8);
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
 }
 
-h1, h2 {
-  font-family: 'Poiret One', cursive;
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
   text-align: center;
-  margin: 0px;
+  margin: 0;
   letter-spacing: 1px;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 4em;
+  color: rgb(229,172,34);
+  text-shadow: 3px 3px black;
+  margin-bottom: -10px;
 }
 
 h2 {
@@ -54,26 +82,28 @@ p {
 }
 
 span {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px 0 20px;
 }
 
-strong {
-  font-weight: bold;
-  font-size: 1.5em;
+span.answer {
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.3em;
 }
 
 input, button {
   opacity: .8;
-  background-color: #9966ff;
+  background-color: rgb(229,172,34);
   color: #ffffff;
   text-align: center;
   letter-spacing: 3px;
   padding: 10px;
   font-size: .9em;
-  border: 1px solid #6600cc;
+  border: none;
   border-radius: 20px;
-  font-family: 'Roboto', arial;
+  font-family: 'Lato', arial;
   transition-property: all;
   transition-duration: .5s;
 }
@@ -84,12 +114,20 @@ input[type="text"] {
 }
 
 button:hover {
-  background-color: #6600cc;
+  background-color: rgb(210,122,49);
   cursor: pointer;
 }
 
 .clear {
   clear: both;
+}
+
+.long-text {
+  line-height: 25px;
+}
+
+ol.history li {
+  margin-bottom: 20px;
 }
 
 /********** Large devices **********/
@@ -231,10 +269,11 @@ div.container {
 
 h1 {
   font-size: 2em;
+  margin-bottom: 0px;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 2em;
 }
   
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {

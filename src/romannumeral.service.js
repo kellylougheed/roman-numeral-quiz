@@ -62,10 +62,10 @@ function RomanNumeralService() {
     }
 
     function store(answer, correctAnswer) {
-      var correct = false;
+      var correct = "incorrect";
       var color = "red";
       if (answer == correctAnswer) {
-        correct = true;
+        correct = "correct";
         color = "green";
         service.correctCount++;
       }

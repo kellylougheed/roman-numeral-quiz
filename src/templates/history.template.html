@@ -2,9 +2,9 @@
 
 <h3>Correct Answers: {{ history.correctCount }}</h3>
 
-<ol>
+<ol class="history">
   <li ng-repeat="problem in history.problems">
-    <span style="color: {{ problem.col }}">{{ problem.correct }}</span><br/>
+    <span class="answer" style="color: {{ problem.col }}">{{ problem.correct }}</span><br/>
     Your Answer: {{ problem.userAnswer }}<br/>
     Correct Answer: {{ problem.correctAnswer }}
   </li>
