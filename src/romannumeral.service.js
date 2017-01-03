@@ -51,6 +51,7 @@ function RomanNumeralService() {
     }
 
     service.checkAnswer = function(arabicNumber, answer) {
+      var answer = answer.toUpperCase();
       var correctAnswer = convertToRoman(arabicNumber);
       if (correctAnswer == answer) {
         service.verdict = "Correct!";
